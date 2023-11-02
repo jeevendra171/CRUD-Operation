@@ -1,0 +1,40 @@
+﻿@model LoginForm.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm("Login", "Account"))
+{
+    <div class="container1">
+        <div class="form-Login">
+            <div class="container body-content">
+                <h3>Registration From</h3>
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    <label for="floatingInput"><i class="bi bi-person" style="color:black"> <b> Name</b></i></label>
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </div>
+                
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password" })
+                    <label for="floatingInput"><i class="bi bi-lock" style="color:black"><b> Password</b></i></label>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+                
+                <div class="text-center">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                </div>
+                <div class="form-text">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-center">
+                    <h6>If you new User? @Html.ActionLink("Register", "Register", "Account")</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    }
+
